@@ -80,7 +80,7 @@ fn part2() {
 }
 
 pub fn main() {
-    println!("### Day 3 ###");
+    println!("\n### Day 3 ###");
     part1();
     part2();
 }

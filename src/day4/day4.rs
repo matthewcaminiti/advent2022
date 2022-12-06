@@ -75,7 +75,7 @@ fn part2() {
 }
 
 pub fn main() {
-    println!("### Day 4 ###");
+    println!("\n### Day 4 ###");
     part1();
     part2();
 }
