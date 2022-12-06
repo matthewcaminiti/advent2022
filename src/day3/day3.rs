@@ -3,7 +3,7 @@ use std::io::{self, BufRead};
 use std::path::Path;
 use std::collections::HashMap;
 
-pub fn part1() {
+fn part1() {
     let mut first_container = HashMap::new();
     let mut priority_tot = 0;
 
@@ -35,7 +35,7 @@ pub fn part1() {
     println!("Total: {}", priority_tot);
 }
 
-pub fn part2() {
+fn part2() {
     let mut first_container = HashMap::new();
     let mut second_container = HashMap::new();
     let mut priority_tot = 0;
