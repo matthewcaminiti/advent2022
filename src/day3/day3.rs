@@ -18,10 +18,8 @@ pub fn part1() {
                         if first_container.contains_key(&c) {
                             let ascii = c as u32;
                             if ascii >= 65 && ascii <= 90 {
-                                println!("char: {}, ascii: {}, prio: {}", c, ascii, ascii - 65 + 27);
                                 priority_tot += ascii - 65 + 27;
                             } else {
-                                println!("char: {}, ascii: {}, prio: {}", c, ascii, ascii - 97 + 1);
                                 priority_tot += ascii - 97 + 1;
                             }
                             break;
@@ -53,10 +51,8 @@ pub fn part2() {
                         if first_container.contains_key(&c) && second_container.contains_key(&c) {
                             let ascii = c as u32;
                             if ascii >= 65 && ascii <= 90 {
-                                println!("char: {}, ascii: {}, prio: {}", c, ascii, ascii - 65 + 27);
                                 priority_tot += ascii - 65 + 27;
                             } else {
-                                println!("char: {}, ascii: {}, prio: {}", c, ascii, ascii - 97 + 1);
                                 priority_tot += ascii - 97 + 1;
                             }
                             break;
