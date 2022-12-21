@@ -5,8 +5,6 @@ use std::io::{BufReader, BufRead, Lines};
 #[derive(Debug)]
 struct Tree {
     height: u8,
-    visited: bool,
-    visible: bool,
 }
 
 fn is_visible(x: usize, y: usize, forest: &Vec<Vec<Tree>>) -> bool {
@@ -129,8 +127,6 @@ fn part1() {
             for c in text.chars() {
                 row.push(Tree{
                     height: c.to_digit(10).unwrap() as u8,
-                    visited: false,
-                    visible: false,
                 });
             }
         }
@@ -163,8 +159,6 @@ fn part2() {
             for c in text.chars() {
                 row.push(Tree{
                     height: c.to_digit(10).unwrap() as u8,
-                    visited: false,
-                    visible: false,
                 });
             }
         }
