@@ -41,6 +41,7 @@ fn part1() {
 }
 
 fn draw_to_crt(cycle: i32, sprite_pos: i32, crt: &mut [[char; 40]; 6]) {
+    let cycle = cycle - 1;
     let row = (cycle as f32 / 40f32).floor() as usize;
 
     if row >= 6 {
@@ -51,9 +52,8 @@ fn draw_to_crt(cycle: i32, sprite_pos: i32, crt: &mut [[char; 40]; 6]) {
         return;
     }
 
-    let x: usize = ((cycle - 1) % 40) as usize;
-    println!("{row}, {x}");
-    crt[row][x] = if sprite_pos - 1 <= x as i32 && sprite_pos + 1 >= x as i32 { '#' } else { '_' };
+    let x: usize = (cycle % 40) as usize;
+    crt[row][x] = if sprite_pos - 1 <= x as i32 && sprite_pos + 1 >= x as i32 { '#' } else { ' ' };
 }
 
 fn part2() {
