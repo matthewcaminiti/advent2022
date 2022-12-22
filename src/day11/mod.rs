@@ -127,7 +127,7 @@ fn part1() {
                     }
                 }
 
-                items.push(new_val / 3);
+                items.push(new_val / 3); // LESSON: DO NOT FUCKING CAST TO FLOAT FOR DIVISION
             }
 
             monkeys[i].n_inspections += items.len() as i64;
