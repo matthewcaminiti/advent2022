@@ -91,11 +91,7 @@ fn parse_monkeys(filename: &str) -> Vec<Monkey> {
 fn part1() {
     let mut monkeys = parse_monkeys("./src/day11/input11.txt");
 
-    for (i, m) in monkeys.iter().enumerate() {
-        println!("{i}, {}, {:?}", m.n_inspections, m.items);
-    }
-
-    for round in 0..20 {
+    for _round in 0..20 {
         for i in 0..monkeys.len() {
 
             if monkeys[i].items.len() == 0 { continue; }
@@ -145,10 +141,6 @@ fn part1() {
 
             monkeys[i].items = Vec::new();
         }
-        println!("### End of Round {}", round+1);
-        for (i, m) in monkeys.iter().enumerate() {
-            println!("monkey {i}, {:?}", m.items);
-        }
     }
 
     println!("Results...");
@@ -165,11 +157,7 @@ fn part2() {
         divisor_product *= m.divisor;
     }
 
-    for (i, m) in monkeys.iter().enumerate() {
-        println!("{i}, {}, {:?}", m.n_inspections, m.items);
-    }
-
-    for round in 0..10000 {
+    for _round in 0..10000 {
         for i in 0..monkeys.len() {
 
             if monkeys[i].items.len() == 0 { continue; }
@@ -218,10 +206,6 @@ fn part2() {
             }
 
             monkeys[i].items = Vec::new();
-        }
-        println!("### End of Round {}", round+1);
-        for (i, m) in monkeys.iter().enumerate() {
-            println!("monkey {i}, {:?}", m.items);
         }
     }
 
