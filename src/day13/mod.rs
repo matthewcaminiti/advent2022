@@ -1,3 +1,4 @@
+use std::cmp::Ordering;
 use std::fs;
 use std::path::Path;
 use std::io::{BufReader, BufRead, Lines};
@@ -29,6 +30,33 @@ impl fmt::Display for Word {
 
     }
 }
+
+impl Ord for Word {
+    fn cmp(&self, other: &Self) -> Ordering {
+        match compare_words(self, other) {
+            WordCmp::Valid => Ordering::Less,
+            WordCmp::Invalid => Ordering::Greater,
+            WordCmp::Skip => Ordering::Equal
+        }
+    }
+}
+
+impl PartialOrd for Word {
+    fn partial_cmp(&self, other: &Self) -> Option<Ordering> {
+        Some(self.cmp(other))
+    }
+}
+
+impl PartialEq for Word {
+    fn eq(&self, other: &Self) -> bool {
+        match compare_words(self, other) {
+            WordCmp::Skip => true,
+            _ => false
+        }
+    }
+}
+
+impl Eq for Word {}
 
 fn parse_word(s: String) -> Vec<Word> {
     let mut jah: Vec<Word> = Vec::new();
@@ -183,9 +211,7 @@ fn compare_words(w1: &Word, w2: &Word) -> WordCmp {
     }
 }
 
-pub fn main() {
-    println!("\n### Day 13 ###");
-
+fn part1() {
     let pairs = parse_all_pairs("./src/day13/input13.txt");
 
     let mut valid_sum = 0;
@@ -204,6 +230,57 @@ pub fn main() {
     }
 
     println!("Valid indices sum: {valid_sum}");
+}
+
+fn part2() {
+    let pairs = parse_all_pairs("./src/day13/input13.txt");
+
+    let mut flattened: Vec<Word> = Vec::new();
+
+    for p in pairs {
+        flattened.push(Word::Arr((&p.0).clone()));
+        flattened.push(Word::Arr((&p.1).clone()));
+    }
+
+    flattened.push(Word::Arr(vec![Word::Arr(vec![Word::Num(2)])]));
+    flattened.push(Word::Arr(vec![Word::Arr(vec![Word::Num(6)])]));
+
+    flattened.sort();
+
+    println!("Flattened len: {}", flattened.len());
+    println!("jah");
+    let mut i1 = 0;
+    let mut i2 = 0;
+
+    for (i, jah) in flattened.iter().enumerate() {
+        match jah {
+            Word::Arr(x) => {
+                if x.len() == 1 {
+                    match x.first().unwrap() {
+                        Word::Arr(y) => {
+                            if y.len() == 1 {
+                                match y.first().unwrap() {
+                                    Word::Num(2) => i1 = i + 1,
+                                    Word::Num(6) => i2 = i + 1,
+                                    _ => {}
+                                }
+                            }
+                        }
+                        _ => {}
+                    }
+                }
+            }
+            _ => {}
+        }
+    }
+
+    println!("Prod of indices: {i1} x {i2} = {}", i1 * i2);
+}
+
+pub fn main() {
+    println!("\n### Day 13 ###");
+    part1();
+    part2();
 }
 
 fn read_lines(filepath: &str) -> Lines<BufReader<fs::File>> {
