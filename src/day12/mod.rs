@@ -124,6 +124,7 @@ fn part1() {
     println!("{}", get_min_dist(&mut map, &s_pos, &e_pos));
 }
 
+#[allow(dead_code)]
 fn part2() {
     let ret = parse_map("./src/day12/input12.txt");
 
@@ -151,7 +152,8 @@ fn part2() {
 pub fn main() {
     println!("\n### Day 12 ###");
     part1();
-    part2();
+    println!("Part 2 disabled becuz slow");
+    // part2();
 }
 
 fn read_lines(filepath: &str) -> Lines<BufReader<fs::File>> {
