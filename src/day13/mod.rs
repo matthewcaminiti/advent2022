@@ -247,8 +247,6 @@ fn part2() {
 
     flattened.sort();
 
-    println!("Flattened len: {}", flattened.len());
-    println!("jah");
     let mut i1 = 0;
     let mut i2 = 0;
 
