@@ -67,6 +67,7 @@ fn get_pairs(filename: &str) -> Vec<Pair> {
     pairs
 }
 
+#[allow(dead_code)]
 fn part1() {
     let pairs = get_pairs("./src/day15/input15.txt");
 
@@ -177,7 +178,8 @@ fn part2() {
 
 pub fn main() {
     println!("\n### Day 15 ###");
-    part1();
+    println!("Part 1 skipped because slow");
+    // part1();
     part2();
 }
 
